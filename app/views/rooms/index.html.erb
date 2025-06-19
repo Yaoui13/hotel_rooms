@@ -1,6 +1,6 @@
 <h1 style="text-align: center; margin-bottom: 30px;">🏨 Hôtels disponibles</h1>
 
-<!-- 🔍 Zone de recherche avec ID pour scroll -->
+
 <div id="search" style="text-align: center; margin-bottom: 30px;">
   <%= form_with url: rooms_path, method: :get, local: true do %>
     <input
@@ -16,7 +16,6 @@
   <% end %>
 </div>
 
-
 <% if @rooms.any? %>
   <div class="hotel-list" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
     <% @rooms.each do |room| %>
@@ -25,6 +24,7 @@
         <div class="hotel-card-content" style="padding: 15px;">
           <h2 style="margin: 0 0 10px;"><%= room.name %> - <%= room.price %>€</h2>
           <p style="margin: 0 0 5px;"><strong>Ville :</strong> <%= room.city %></p>
+          <p style="margin: 0 0 5px;"><strong>Capacité :</strong> <%= room.capacity %> lit(s)</p>
           <p style="margin: 0 0 10px;"><%= room.description %></p>
           <div class="btn-container" style="text-align: center;">
             <%= link_to 'Réserver', new_reservation_path(room_id: room.id), class: "btn", style: "display: inline-block; background-color: #2ecc71; color: white; padding: 8px 15px; border-radius: 6px; text-decoration: none;" %>

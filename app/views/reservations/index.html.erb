@@ -9,7 +9,8 @@
         <th style="padding: 12px; border: 1px solid #ddd;">Ville</th>
         <th style="padding: 12px; border: 1px solid #ddd;">Date d'arrivée</th>
         <th style="padding: 12px; border: 1px solid #ddd;">Date de départ</th>
-        <th style="padding: 12px; border: 1px solid #ddd;">Prix (€)</th>
+        <th style="padding: 12px; border: 1px solid #ddd;">Prix total (€)</th>
+        <th style="padding: 12px; border: 1px solid #ddd;">Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -20,7 +21,10 @@
           <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.room.city %></td>
           <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.start_date.strftime('%d/%m/%Y') %></td>
           <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.end_date.strftime('%d/%m/%Y') %></td>
-          <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.room.price %></td>
+          <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.total_price %> €</td>
+          <td style="padding: 12px; border: 1px solid #ddd;">
+            <%= link_to "Annuler", reservation_path(reservation), method: :delete, data: { confirm: "Tu es sûr de vouloir annuler ?" }, style: "color: red;" %>
+          </td>
         </tr>
       <% end %>
     </tbody>
