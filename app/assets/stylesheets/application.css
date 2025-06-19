@@ -1,15 +1,352 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
+  padding: 40px;
+  line-height: 1.6;
+}
+
+
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 34px;
+  font-weight: bold;
+  color: #2c3e50;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+
+.hotel-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 10px;
+}
+
+
+.hotel-card {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  width: 300px;
+  animation: fadeIn 0.5s ease-in-out;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.hotel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+}
+
+
+.hotel-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+
+.hotel-card-content {
+  padding: 20px;
+}
+
+.hotel-card-content h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.hotel-card-content p {
+  font-size: 14px;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+
+.btn-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.btn {
+  background-color: #3498db;
+  font-weight: bold;
+  border-radius: 30px;
+  padding: 12px 28px;
+  font-size: 15px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #1f78c1;
+}
+
+.btn::before {
+  content: '🛏️';
+}
+
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #007bff, #0056b3);
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  z-index: 999;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.nav-item {
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.nav-item:hover {
+  transform: scale(1.1);
+}
+
+.nav-item span {
+  display: block;
+  font-size: 24px;
+}
+
+.nav-item small {
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+form input[type="text"] {
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 280px;
+  transition: box-shadow 0.3s;
+}
+
+form input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0 0 8px #3498db;
+}
+
+form button {
+  padding: 8px 16px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #1f78c1;
+}
+
+
+.reservation-confirmation {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  max-width: 600px;
+  margin: 40px auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.reservation-confirmation h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+.reservation-confirmation p {
+  font-size: 16px;
+  margin: 8px 0;
+  color: #555;
+}
+
+.reservation-confirmation hr {
+  border: none;
+  height: 1px;
+  background-color: #eee;
+  margin: 20px 0;
+}
+
+
+.error-box {
+  background-color: #ffe6e6;
+  color: #c0392b;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.error-box ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.error-box li::before {
+  content: "❌ ";
+}
+
+
+.reservation-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px 10px;
+}
+
+.reservation-card {
+  background-color: #ffffff;
+  padding: 20px;
+  width: 320px;
+  border-radius: 15px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.reservation-card:hover {
+  transform: translateY(-5px);
+}
+
+.reservation-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.reservation-card p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+
+
+body.welcome-page {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #6B73FF 0%, #000DFF 100%);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.welcome-form {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  margin: 30px auto 0;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-form input[type="text"],
+.welcome-form input[type="email"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.welcome-form .btn {
+  background-color: #3498db;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.welcome-form .btn:hover {
+  background-color: #1f78c1;
+}
+.welcome-page {
+  background: linear-gradient(to right, #007bff, #00bfff);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  color: white;
+}
+
+.welcome-form {
+  background-color: rgba(255,255,255,0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.welcome-form label {
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.welcome-form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.welcome-title {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+}

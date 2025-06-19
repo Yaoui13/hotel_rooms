@@ -1,0 +1,20 @@
+<h1>📄 Mes réservations</h1>
+
+<% if @reservations.any? %>
+  <div class="reservation-list">
+    <% @reservations.each do |reservation| %>
+      <div class="reservation-card">
+        <h2><%= reservation.room.name %> – <%= reservation.room.city %></h2>
+        <p><strong>Client :</strong> <%= reservation.client_name %></p>
+        <p><strong>Du :</strong> <%= reservation.start_date.strftime('%d/%m/%Y') %> au <%= reservation.end_date.strftime('%d/%m/%Y') %></p>
+        <p><strong>Prix :</strong> <%= reservation.room.price %> €</p>
+        <div class="btn-container">
+          <%= link_to '🗑 Supprimer', reservation_path(reservation), method: :delete, data: { confirm: "Supprimer cette réservation ?" }, class: "btn" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p style="text-align: center; margin-top: 20px;">Aucune réservation pour le moment.</p>
+<% end %>
+

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root to: 'welcome#index'
+  post 'welcome', to: 'welcome#create', as: 'welcome'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :clients, only: [:index, :show, :new, :create]
+  resources :rooms, only: [:index, :show, :new, :create]
+  resources :reservations, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 end

@@ -1,0 +1,12 @@
+<div class="reservation-confirmation">
+  <h2>✅ Merci <%= @reservation.client_name %> !</h2>
+  <p>Votre réservation a bien été enregistrée.</p>
+  <hr style="margin: 20px 0;">
+  <p><strong>🏨 Hôtel :</strong> <%= @room.name %></p>
+  <p><strong>📍 Ville :</strong> <%= @room.city %></p>
+  <p><strong>📅 Du :</strong> <%= @reservation.start_date.strftime('%d/%m/%Y') %> au <%= @reservation.end_date.strftime('%d/%m/%Y') %></p>
+  <div class="btn-container" style="margin-top: 25px;">
+    <%= link_to 'Retour à l’accueil', root_path, class: "btn" %>
+  </div>
+</div>
+

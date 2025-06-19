@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  hotel: one
+  start_date: 2025-06-18
+  end_date: 2025-06-18
+  guests: 1
+  total_price: 1
+
+two:
+  user: two
+  hotel: two
+  start_date: 2025-06-18
+  end_date: 2025-06-18
+  guests: 1
+  total_price: 1

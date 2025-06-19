@@ -2,14 +2,43 @@
 <html>
   <head>
     <title>HotelRooms</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body>
+  <body style="padding-bottom: 60px;">
+
+    <% if flash[:notice] %>
+      <div style="background-color: #d4edda; color: #155724; padding: 10px; text-align: center;">
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div style="background-color: #f8d7da; color: #721c24; padding: 10px; text-align: center;">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
     <%= yield %>
+
+    <% unless controller_name == "welcome" && action_name == "index" %>
+      <div class="bottom-nav" style="position: fixed; bottom: 0; left: 0; right: 0; background-color: #fff; border-top: 1px solid #ccc; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 6px rgba(0,0,0,0.1); z-index: 1000;">
+        <%= link_to rooms_path, class: "nav-item", style: "text-align: center; color: #333; text-decoration: none;" do %>
+          <span style="font-size: 20px;">🏠</span><br>
+          <small>Accueil</small>
+        <% end %>
+
+        <%= link_to reservations_path, class: "nav-item", style: "text-align: center; color: #333; text-decoration: none;" do %>
+          <span style="font-size: 20px;">📅</span><br>
+          <small>Mes réservations</small>
+        <% end %>
+
+        <%= link_to rooms_path(anchor: "search"), class: "nav-item", style: "text-align: center; color: #333; text-decoration: none;" do %>
+          <span style="font-size: 20px;">🔍</span><br>
+          <small>Recherche</small>
+        <% end %>
+      </div>
+    <% end %>
+
   </body>
 </html>

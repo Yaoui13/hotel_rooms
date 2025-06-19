@@ -1,0 +1,17 @@
+<h1 class="welcome-title">Bienvenue</h1>
+
+<%= form_with url: welcome_path, method: :post, local: true, class: "welcome-form" do %>
+  <div>
+    <%= label_tag :name, "Nom" %><br>
+    <%= text_field_tag :name, nil, required: true, placeholder: "Votre nom" %>
+  </div>
+
+  <div>
+    <%= label_tag :email, "Email" %><br>
+    <%= email_field_tag :email, nil, required: true, placeholder: "Votre email" %>
+  </div>
+
+  <div>
+    <%= submit_tag "Entrer", class: "btn" %>
+  </div>
+<% end %>
