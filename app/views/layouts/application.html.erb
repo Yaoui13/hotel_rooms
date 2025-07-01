@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
-  <body style="padding-bottom: 60px;">
+  <body style="padding-bottom: 60px; margin: 0; font-family: Arial, sans-serif;">
 
     <% if flash[:notice] %>
       <div style="background-color: #d4edda; color: #155724; padding: 10px; text-align: center;">
@@ -22,7 +22,20 @@
     <%= yield %>
 
     <% unless controller_name == "welcome" && action_name == "index" %>
-      <div class="bottom-nav" style="position: fixed; bottom: 0; left: 0; right: 0; background-color: #fff; border-top: 1px solid #ccc; display: flex; justify-content: space-around; padding: 10px 0; box-shadow: 0 -2px 6px rgba(0,0,0,0.1); z-index: 1000;">
+      <nav class="bottom-nav" style="
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+        display: flex;
+        justify-content: space-around;
+        padding: 10px 0;
+        box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+        z-index: 1000;
+        font-size: 14px;
+      ">
         <%= link_to rooms_path, class: "nav-item", style: "text-align: center; color: #333; text-decoration: none;" do %>
           <span style="font-size: 20px;">🏠</span><br>
           <small>Accueil</small>
@@ -37,7 +50,7 @@
           <span style="font-size: 20px;">🔍</span><br>
           <small>Recherche</small>
         <% end %>
-      </div>
+      </nav>
     <% end %>
 
   </body>

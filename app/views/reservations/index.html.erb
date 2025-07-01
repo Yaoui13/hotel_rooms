@@ -22,7 +22,6 @@
           <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.start_date.strftime('%d/%m/%Y') %></td>
           <td style="padding: 12px; border: 1px solid #ddd;"><%= reservation.end_date.strftime('%d/%m/%Y') %></td>
           <td style="padding: 12px; border: 1px solid #ddd;">
-            <%# Calcul du nombre de nuits et prix total %>
             <% nights = (reservation.end_date - reservation.start_date).to_i %>
             <%= number_to_currency(reservation.room.price * nights, unit: "€", separator: ",", delimiter: " ") %>
           </td>
