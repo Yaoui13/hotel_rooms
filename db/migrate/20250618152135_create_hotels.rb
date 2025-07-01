@@ -4,6 +4,7 @@ class CreateHotels < ActiveRecord::Migration[7.0]
       t.string :name
       t.string :address
       t.integer :price
+      t.integer :capacity
       t.text :description
       t.string :photo
 
@@ -11,3 +12,4 @@ class CreateHotels < ActiveRecord::Migration[7.0]
     end
   end
 end
+

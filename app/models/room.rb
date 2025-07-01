@@ -1,8 +1,7 @@
 class Room < ApplicationRecord
-  belongs_to :hotel
-  has_many :reservations, dependent: :destroy
-
+  # Pas de relation belongs_to hotel, c’est une entité indépendante
   validates :name, presence: true
-  validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :price, presence: true, numericality: { greater_than: 0 }
+  validates :price, numericality: { greater_than_or_equal_to: 0 }, allow_nil: true
+  validates :capacity, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
 end
+
