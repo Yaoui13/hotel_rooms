@@ -10,20 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_06_19_080723) do
+ActiveRecord::Schema[7.0].define(version: 2025_07_01_191053) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "hotel_id", null: false
     t.date "start_date"
     t.date "end_date"
     t.integer "guests"
     t.integer "total_price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["hotel_id"], name: "index_bookings_on_hotel_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -32,17 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_080723) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "nom"
-  end
-
-  create_table "hotels", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.integer "price"
-    t.text "description"
-    t.string "photo"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "capacity"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -59,13 +46,11 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_080723) do
     t.string "name"
     t.integer "price"
     t.integer "capacity"
-    t.bigint "hotel_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
     t.string "city"
     t.string "photo_url"
-    t.index ["hotel_id"], name: "index_rooms_on_hotel_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,8 +61,6 @@ ActiveRecord::Schema[7.0].define(version: 2025_06_19_080723) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "bookings", "hotels"
   add_foreign_key "bookings", "users"
   add_foreign_key "reservations", "rooms"
-  add_foreign_key "rooms", "hotels"
 end
